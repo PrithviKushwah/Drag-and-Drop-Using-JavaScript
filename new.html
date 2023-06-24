@@ -1,93 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <style>
-    .container {
-      display: flex;
-      justify-content: space-around;
-      align-items: flex-start;
-      height: 300px;
-      border: 1px solid #ccc;
-      padding: 50px;
-      margin: 30px;
-
-    }
-    :hover.container{
-        background-color: #fceeee;
-    }
-
-    .item {
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        margin: 30px;
-      background-color: #eee;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 5px;
-      cursor: move;
-       
-    }
-    :hover.item{
-  transform: scale(1.2);
-  color:rgb(248, 131, 155) ;
-    }
-
-    .reset-button {
-         padding: 20px;
-      margin: 200px 0px 200px 100px;
-      border-radius: 50%;
-      border-color: rgb(248, 131, 155);
-      }
-      :hover.reset-button{
-        background-color: rgb(201, 90, 90);
-        /* transform: scale(1.5); */
-        
-        
-      }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
-    <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Drag and Drop items
-    Simple web app By Prithvi Kushwah</p>
-    <div style="display: flex;">
-    <div class="container">
-      <div class="item" draggable="true" ondragstart="drag(event)" id="item1">Item 1</div>
-      <div class="item" draggable="true" ondragstart="drag(event)" id="item2">Item 2</div>
-      <div class="item" draggable="true" ondragstart="drag(event)" id="item3">Item 3</div>
-    </div>
-  
-    <div class="container" id="dropContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Drop items here:</p>
-    </div>
-    <button class="reset-button" onclick="reset()">Reset</button>
-    </div>
-
-
   <script>
-    function allowDrop(event) {
-      event.preventDefault();
-    }
-
-    function drag(event) {
-      event.dataTransfer.setData("text", event.target.id);
-    }
-
-    function drop(event) {
-      event.preventDefault();
-      var data = event.dataTransfer.getData("text");
-      var item = document.getElementById(data);
-      var dropContainer = document.getElementById("dropContainer");
-      dropContainer.appendChild(item);
-    }
-
-    function reset() {
-      var container1 = document.getElementsByClassName("container")[0];
-      var container2 = document.getElementById("dropContainer");
-      var items = container2.querySelectorAll(".item");
-
-      for (var i = 0; i < items.length; i++) {
-        container1.appendChild(items[i]);
-      }
-    }
+    const home = 'home data';
+    const contact = 'contact data';
+    const info = 'inof data';
+    const guide = 'guide data';
+  let show = (idd)=>{
+    document.getElementById('sample').innerHTML = '';
+    if(idd=='home'){
+      document.getElementById('content').innerHTML = "<img src='https://www.shutterstock.com/image-vector/vector-illustration-cool-detailed-red-260nw-94498447.jpg' alt='Home image'>" + "<h3>Home Content</h3>";
+    }else if(idd==='contact'){
+    // getElementById('contact').style.display= 'block' ;
+    document.getElementById('content').innerHTML = "<ul> Name : Prithvi Kushwah</ul> <ul> Contact: 9131780601</ul> <ul> Email: kushwahprithvi78@gmail.com</ul>";
+  }else if(idd==='info'){
+    // getElementById('info').style.display= 'block' ;
+    document.getElementById('content').innerHTML = "<img src='https://images.unsplash.com/photo-1560416313-414b33c856a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW5mb3JtYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60' alt='Home image'>" + "<h3>Information Content</h3>";;
+  }else if(idd==='guide'){
+    // getElementById('guide').style.display= 'block' ;
+    document.getElementById('content').innerHTML ="<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLQXn0YSKj398b5TfMstwTPdM1prLwmyYZFy0EXQgaVg&s' alt='Home image'>" + "<h3>Guide Content</h3>";;
+  }
+  }
   </script>
+    <aside class="sidebar">
+      <nav class="nav">
+        <ul>
+          <a href="#" class="index" id="home"  onclick="show('home')">Home</a></ul>
+          <ul><a href="#" class="index" id="contact" onclick="show('contact')">Contact</a></ul>
+          <ul><a href="#" class="index" id="info" onclick="show('info')">Information</a></ul>
+          <ul><a href="#" class="index" id="guide" onclick="show('guide')">Guide</a></ul>
+        
+      </nav>
+    </aside>
+  
+    <section class="twitter">
+      <div class="container">
+        
+        <p id="content"><h1 id="sample" class="index" style="display: block;">Select an Option First</h1></p>
+       
+      </div>
+    </section>
+   
+    
 </body>
 </html>
